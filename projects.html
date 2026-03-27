@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Proyectos — Musa Arradi · Technical SEO & AI Search Specialist</title>
+  <meta name="description" content="Proyectos y casos de uso de Musa Arradi: automatización SEO, optimización para AI Search (GEO) y sistemas de auditoría técnica." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+
+  <style>
+    /* ── Projects page styles ───────────────────────────── */
+    #projects-content { padding: 72px 0 96px; }
+
+    /* Grid */
+    .pg-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 22px;
+      margin-bottom: 80px;
+    }
+
+    /* Summary card (top of grid) */
+    .pg-card {
+      padding: 30px 26px;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      cursor: pointer;
+      text-decoration: none;
+      color: inherit;
+    }
+    .pg-card:hover { color: inherit; }
+
+    .pg-num {
+      font-size: 11px; font-weight: 700; letter-spacing: 0.12em;
+      color: var(--accent); text-transform: uppercase;
+    }
+    .pg-title {
+      font-size: 18px; font-weight: 800; letter-spacing: -0.025em;
+      color: var(--ink); line-height: 1.2;
+    }
+    .pg-desc { font-size: 13.5px; color: var(--muted); line-height: 1.6; flex: 1; }
+
+    .pg-tags { display: flex; flex-wrap: wrap; gap: 6px; }
+
+    .pg-links {
+      display: flex; gap: 8px; flex-wrap: wrap; margin-top: 2px;
+    }
+
+    /* ─── Case Study Sections ──────────────────────────── */
+    .case-section {
+      border-top: 1px solid var(--border);
+      padding: 64px 0;
+    }
+    .case-section:last-child { border-bottom: 1px solid var(--border); }
+
+    .case-inner {
+      display: grid;
+      grid-template-columns: 260px 1fr;
+      gap: 56px;
+      align-items: start;
+    }
+
+    .case-sidebar {
+      position: sticky;
+      top: 84px;
+    }
+
+    .case-num {
+      font-size: 11px; font-weight: 700; letter-spacing: 0.12em;
+      color: var(--accent); text-transform: uppercase; margin-bottom: 8px;
+    }
+    .case-title {
+      font-size: 22px; font-weight: 800; letter-spacing: -0.03em;
+      color: var(--ink); line-height: 1.2; margin-bottom: 14px;
+    }
+    .case-tags { display: flex; flex-direction: column; gap: 6px; margin-bottom: 18px; }
+    .case-tags .tech-pill { display: inline-block; }
+
+    .case-body {}
+
+    .case-block { margin-bottom: 32px; }
+    .case-block:last-child { margin-bottom: 0; }
+
+    .case-block-label {
+      font-size: 11px; font-weight: 800; letter-spacing: 0.14em;
+      text-transform: uppercase; color: var(--muted);
+      margin-bottom: 10px; padding-bottom: 8px;
+      border-bottom: 1px solid var(--border-soft);
+    }
+
+    .case-block p {
+      font-size: 15px; line-height: 1.7; color: var(--ink-2);
+    }
+
+    .case-block ul {
+      list-style: none;
+      display: flex; flex-direction: column; gap: 7px;
+    }
+    .case-block ul li {
+      font-size: 14.5px; line-height: 1.55; color: var(--ink-2);
+      padding-left: 18px; position: relative;
+    }
+    .case-block ul li::before {
+      content: ''; position: absolute; left: 0; top: 9px;
+      width: 5px; height: 5px;
+      background: var(--accent); border-radius: 50%; opacity: 0.6;
+    }
+
+    .case-impact-box {
+      background: linear-gradient(135deg, var(--accent-soft) 0%, #e8f0fe 100%);
+      border: 1px solid var(--accent-mid);
+      border-radius: var(--r-md);
+      padding: 22px 24px;
+    }
+    .case-impact-box strong {
+      display: block; font-size: 13px; font-weight: 700;
+      color: var(--accent-dark); text-transform: uppercase;
+      letter-spacing: 0.08em; margin-bottom: 10px;
+    }
+    .case-impact-box ul { display: flex; flex-direction: column; gap: 6px; }
+    .case-impact-box ul li {
+      font-size: 14px; color: var(--accent-dark); font-weight: 500;
+      padding-left: 18px; position: relative;
+    }
+    .case-impact-box ul li::before {
+      content: '↗'; position: absolute; left: 0; font-size: 11px;
+      color: var(--accent); font-weight: 800; top: 2px;
+    }
+
+    /* ─── Back to top ──────────────────────────────────── */
+    .page-end {
+      padding: 48px 0; text-align: center;
+    }
+
+    /* ─── Responsive ────────────────────────────────────── */
+    @media (max-width: 768px) {
+      .pg-grid { grid-template-columns: 1fr; }
+      .case-inner { grid-template-columns: 1fr; gap: 28px; }
+      .case-sidebar { position: static; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navigation -->
+  <nav class="nav" id="navbar">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-logo">Musa Arradi <span>SEO & AI Search</span></a>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="index.html#experience">Experiencia</a></li>
+        <li><a href="projects.html" class="active">Proyectos</a></li>
+        <li><a href="blog.html">Blog</a></li>
+        <li class="nav-cta"><a href="index.html#contact">Contacto</a></li>
+      </ul>
+      <button class="hamburger" id="hamburger" aria-label="Abrir menú">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Page Header -->
+  <div class="page-header">
+    <div class="container">
+      <div class="badge" style="margin-bottom:16px;">Casos de uso</div>
+      <h1>Proyectos &amp; Casos de uso</h1>
+      <p>Sistemas y estrategias diseñados para escalar visibilidad orgánica, reducir trabajo manual y generar impacto de negocio medible.</p>
+    </div>
+  </div>
+
+  <!-- ═══ MAIN CONTENT ═════════════════════════════════════ -->
+  <section id="projects-content">
+    <div class="container">
+
+      <!-- Summary Cards Grid -->
+      <div class="pg-grid">
+
+        <a href="#p-automation" class="card pg-card fi" data-delay="0">
+          <div class="pg-num">Proyecto 01</div>
+          <div class="pg-title">Sistema de Automatización SEO</div>
+          <p class="pg-desc">Workflow con Make + APIs que automatiza keyword research, clustering y generación de contenido a escala.</p>
+          <div class="pg-tags">
+            <span class="tech-pill">Make</span>
+            <span class="tech-pill">DataForSEO</span>
+            <span class="tech-pill">APIs</span>
+            <span class="tech-pill">LLMs</span>
+          </div>
+          <div class="pg-links">
+            <span class="btn btn-sm btn-ghost">Ver caso detallado ↓</span>
+            <a href="https://github.com/musa-arradi" target="_blank" rel="noopener" class="btn btn-sm btn-secondary" onclick="event.stopPropagation()">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0 1 12 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg>
+              GitHub
+            </a>
+          </div>
+        </a>
+
+        <a href="#p-geo" class="card pg-card fi" data-delay="1">
+          <div class="pg-num">Proyecto 02</div>
+          <div class="pg-title">AI Search Optimization (GEO)</div>
+          <p class="pg-desc">Estruturación de contenidos para maximizar citación en motores de búsqueda basados en IA: ChatGPT, Perplexity, Gemini.</p>
+          <div class="pg-tags">
+            <span class="tech-pill">GEO</span>
+            <span class="tech-pill">AEO</span>
+            <span class="tech-pill">LLMs</span>
+            <span class="tech-pill">GSC</span>
+          </div>
+          <div class="pg-links">
+            <span class="btn btn-sm btn-ghost">Ver caso detallado ↓</span>
+            <a href="https://github.com/musa-arradi" target="_blank" rel="noopener" class="btn btn-sm btn-secondary" onclick="event.stopPropagation()">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0 1 12 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg>
+              GitHub
+            </a>
+          </div>
+        </a>
+
+        <a href="#p-audit" class="card pg-card fi" data-delay="2">
+          <div class="pg-num">Proyecto 03</div>
+          <div class="pg-title">Technical SEO Audit System</div>
+          <p class="pg-desc">Sistema de auditoría técnica replicable y escalable. Detecta problemas de indexación, arquitectura y señales semánticas.</p>
+          <div class="pg-tags">
+            <span class="tech-pill">Screaming Frog</span>
+            <span class="tech-pill">Python</span>
+            <span class="tech-pill">GSC</span>
+            <span class="tech-pill">Ahrefs</span>
+          </div>
+          <div class="pg-links">
+            <span class="btn btn-sm btn-ghost">Ver caso detallado ↓</span>
+            <a href="https://github.com/musa-arradi" target="_blank" rel="noopener" class="btn btn-sm btn-secondary" onclick="event.stopPropagation()">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0 1 12 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg>
+              GitHub
+            </a>
+          </div>
+        </a>
+
+      </div>
+
+      <!-- ─── Case Study 1 ────────────────────────────── -->
+      <div class="case-section fi" id="p-automation">
+        <div class="case-inner">
+          <div class="case-sidebar">
+            <div class="case-num">Proyecto 01</div>
+            <h2 class="case-title">Sistema de Automatización SEO</h2>
+            <div class="case-tags">
+              <span class="tech-pill">Make</span>
+              <span class="tech-pill">DataForSEO API</span>
+              <span class="tech-pill">ChatGPT API</span>
+              <span class="tech-pill">Google Sheets</span>
+              <span class="tech-pill">Screaming Frog</span>
+              <span class="tech-pill">LLMs</span>
+            </div>
+            <a href="https://github.com/musa-arradi" target="_blank" rel="noopener" class="btn btn-sm btn-secondary" style="width:100%; justify-content:center;">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0 1 12 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg>
+              Ver en GitHub
+            </a>
+          </div>
+          <div class="case-body">
+            <div class="case-block">
+              <div class="case-block-label">El Problema</div>
+              <p>El proceso tradicional de keyword research, clustering y creación de briefs de contenido requería horas de trabajo manual repetitivo: exportar datos de múltiples herramientas, clasificar keywords por intención, crear agrupaciones lógicas y redactar briefs individuales. Escalar ese proceso sin aumentar el equipo era inviable.</p>
+            </div>
+            <div class="case-block">
+              <div class="case-block-label">La Solución</div>
+              <p>Diseño de un pipeline automatizado end-to-end usando Make como orquestador central:</p>
+              <ul style="margin-top:12px;">
+                <li>Extracción de keywords y competitividad vía DataForSEO API.</li>
+                <li>Clasificación automática por intención de búsqueda usando un modelo LLM.</li>
+                <li>Clustering semántico de keywords mediante embeddings + similitud coseno.</li>
+                <li>Generación automática de briefs de contenido con prompts estructurados (GPT-4).</li>
+                <li>Entrega organizada en Google Sheets listo para el equipo de contenido.</li>
+              </ul>
+            </div>
+            <div class="case-block">
+              <div class="case-block-label">Resultado &amp; Impacto</div>
+              <div class="case-impact-box">
+                <strong>Impacto medible</strong>
+                <ul>
+                  <li>Reducción del tiempo de research de ~6 horas a menos de 30 minutos por proyecto.</li>
+                  <li>Producción de contenido escalada x5 sin incremento de recursos humanos.</li>
+                  <li>Criterio estratégico para priorizar oportunidades de alto potencial de tráfico.</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ─── Case Study 2 ────────────────────────────── -->
+      <div class="case-section fi" id="p-geo">
+        <div class="case-inner">
+          <div class="case-sidebar">
+            <div class="case-num">Proyecto 02</div>
+            <h2 class="case-title">AI Search Optimization (GEO)</h2>
+            <div class="case-tags">
+              <span class="tech-pill">GEO</span>
+              <span class="tech-pill">AEO</span>
+              <span class="tech-pill">ChatGPT</span>
+              <span class="tech-pill">Perplexity</span>
+              <span class="tech-pill">GSC</span>
+              <span class="tech-pill">GA4</span>
+            </div>
+            <a href="https://github.com/musa-arradi" target="_blank" rel="noopener" class="btn btn-sm btn-secondary" style="width:100%; justify-content:center;">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0 1 12 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg>
+              Ver en GitHub
+            </a>
+          </div>
+          <div class="case-body">
+            <div class="case-block">
+              <div class="case-block-label">El Problema</div>
+              <p>Los motores de búsqueda tradicionales están cediendo cuota de atención a las respuestas generadas por IA (ChatGPT, Perplexity, Gemini). Muchas marcas no aparecen citadas en estas respuestas, perdiendo visibilidad ante usuarios que ya no hacen clic en resultados orgánicos clásicos.</p>
+            </div>
+            <div class="case-block">
+              <div class="case-block-label">La Solución</div>
+              <p>Implementación de una estrategia GEO (Generative Engine Optimization) basada en:</p>
+              <ul style="margin-top:12px;">
+                <li>Auditoría de citaciones actuales de la marca en respuestas de LLMs.</li>
+                <li>Identificación de queries donde la marca debería ser citada pero no lo es.</li>
+                <li>Reestructuración de contenidos clave: definiciones claras, formato pregunta-respuesta, datos propios.</li>
+                <li>Optimización de señales de autoridad: citas externas, menciones en medios y linkbuilding editorial.</li>
+                <li>Monitorización mensual del porcentaje de citaciones en ChatGPT, Perplexity y Gemini.</li>
+              </ul>
+            </div>
+            <div class="case-block">
+              <div class="case-block-label">Resultado &amp; Impacto</div>
+              <div class="case-impact-box">
+                <strong>Impacto medible</strong>
+                <ul>
+                  <li>Incremento del porcentaje de citaciones en queries objetivo de AI Search.</li>
+                  <li>Marca posicionada como fuente de referencia en su categoría en entornos generativos.</li>
+                  <li>Framework replicable adaptable a cualquier sector y marca.</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ─── Case Study 3 ────────────────────────────── -->
+      <div class="case-section fi" id="p-audit">
+        <div class="case-inner">
+          <div class="case-sidebar">
+            <div class="case-num">Proyecto 03</div>
+            <h2 class="case-title">Technical SEO Audit System</h2>
+            <div class="case-tags">
+              <span class="tech-pill">Screaming Frog</span>
+              <span class="tech-pill">Python</span>
+              <span class="tech-pill">GSC API</span>
+              <span class="tech-pill">Ahrefs</span>
+              <span class="tech-pill">Semrush</span>
+              <span class="tech-pill">Looker Studio</span>
+            </div>
+            <a href="https://github.com/musa-arradi" target="_blank" rel="noopener" class="btn btn-sm btn-secondary" style="width:100%; justify-content:center;">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0 1 12 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg>
+              Ver en GitHub
+            </a>
+          </div>
+          <div class="case-body">
+            <div class="case-block">
+              <div class="case-block-label">El Problema</div>
+              <p>Las auditorías SEO técnicas tienden a ser procesos ad-hoc difíciles de escalar: cada analista sigue criterios distintos, los entregables son inconsistentes y el tiempo invertido para cada cliente es desproporcionado respecto al valor generado.</p>
+            </div>
+            <div class="case-block">
+              <div class="case-block-label">La Solución</div>
+              <p>Creación de un sistema de auditoría estandarizado y replicable que cubre:</p>
+              <ul style="margin-top:12px;">
+                <li>Crawl completo con Screaming Frog + configuraciones predefinidas para detectar los errores más críticos.</li>
+                <li>Análisis de cobertura de indexación cruzando datos de GSC API con el crawl.</li>
+                <li>Revisión de arquitectura de enlazado interno con scripts Python personalizados.</li>
+                <li>Detección de canibalización de keywords e issues de duplicados.</li>
+                <li>Dashboard de resultados automatizado en Looker Studio para presentación al cliente.</li>
+              </ul>
+            </div>
+            <div class="case-block">
+              <div class="case-block-label">Resultado &amp; Impacto</div>
+              <div class="case-impact-box">
+                <strong>Impacto medible</strong>
+                <ul>
+                  <li>Tiempo de auditoría reducido en un 60% sin perder profundidad de análisis.</li>
+                  <li>Entregables consistentes y de alta calidad para cualquier tipología de proyecto.</li>
+                  <li>Mejoras de indexación del +20-40% en proyectos donde se aplicó el framework completo.</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Page end CTA -->
+      <div class="page-end fi">
+        <p style="color:var(--muted); font-size:14px; margin-bottom:16px;">¿Tienes un proyecto en mente?</p>
+        <a href="index.html#contact" class="btn btn-primary">Hablemos →</a>
+      </div>
+
+    </div>
+  </section>
+
+  <footer class="site-footer">
+    <p>© 2026 Musa Arradi · <a href="index.html">Home</a> · <a href="projects.html">Proyectos</a> · <a href="blog.html">Blog</a> · Barcelona</p>
+  </footer>
+
+  <script>
+    const nav = document.getElementById('navbar');
+    window.addEventListener('scroll', () => nav.classList.toggle('scrolled', window.scrollY > 10), { passive: true });
+
+    const ham = document.getElementById('hamburger');
+    const links = document.getElementById('navLinks');
+    ham.addEventListener('click', () => links.classList.toggle('open'));
+    links.querySelectorAll('a').forEach(a => a.addEventListener('click', () => links.classList.remove('open')));
+
+    const obs = new IntersectionObserver(entries => {
+      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); } });
+    }, { threshold: 0.08 });
+    document.querySelectorAll('.fi').forEach(el => obs.observe(el));
+
+    // Card click → anchor nav
+    document.querySelectorAll('a.pg-card').forEach(card => {
+      card.addEventListener('click', e => {
+        if (e.target.closest('.pg-links a')) return;
+        e.preventDefault();
+        const target = document.querySelector(card.getAttribute('href'));
+        if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      });
+    });
+  </script>
+</body>
+</html>
