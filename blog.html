@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Blog — Musa Arradi · Technical SEO & AI Search</title>
+  <meta name="description" content="Artículos sobre SEO técnico, AI Search (GEO / AEO) y automatización de workflows. Por Musa Arradi, Technical SEO & AI Search Specialist." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+
+  <style>
+    /* ── Blog page styles ───────────────────────────────── */
+    #blog-content { padding: 72px 0 96px; }
+
+    /* Categories */
+    .blog-filters {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-bottom: 48px;
+    }
+    .filter-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 7px 16px;
+      border-radius: 99px;
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
+      border: 1.5px solid var(--border);
+      background: var(--surface);
+      color: var(--muted);
+      transition: all var(--t) var(--ease);
+    }
+    .filter-pill:hover,
+    .filter-pill.active {
+      background: var(--ink);
+      color: #fff;
+      border-color: var(--ink);
+    }
+
+    /* Article grid */
+    .blog-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 22px;
+    }
+
+    /* Article card */
+    .article-card {
+      padding: 28px 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      text-decoration: none;
+      color: inherit;
+    }
+    .article-card:hover { color: inherit; }
+
+    .article-meta {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 12px;
+      color: var(--muted);
+      font-weight: 500;
+    }
+    .article-meta-dot {
+      width: 3px; height: 3px;
+      border-radius: 50%;
+      background: var(--muted);
+    }
+    .article-cat {
+      display: inline-block;
+      padding: 2px 9px;
+      border-radius: 99px;
+      font-size: 11px;
+      font-weight: 700;
+      background: var(--accent-soft);
+      color: var(--accent-dark);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    .article-title {
+      font-size: 17px;
+      font-weight: 700;
+      color: var(--ink);
+      letter-spacing: -0.02em;
+      line-height: 1.3;
+    }
+
+    .article-excerpt {
+      font-size: 13.5px;
+      color: var(--muted);
+      line-height: 1.6;
+      flex: 1;
+    }
+
+    .article-read {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--accent);
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      transition: gap var(--t) var(--ease);
+    }
+    .article-card:hover .article-read { gap: 9px; }
+    .article-read::after { content: '→'; }
+
+    /* Empty coming soon state */
+    .coming-soon {
+      text-align: center;
+      padding: 72px 24px 40px;
+      border-top: 1px solid var(--border-soft);
+      margin-top: 48px;
+    }
+    .cs-icon { font-size: 36px; margin-bottom: 16px; opacity: .45; }
+    .cs-title {
+      font-size: 19px; font-weight: 700; color: var(--ink);
+      margin-bottom: 8px; letter-spacing: -0.02em;
+    }
+    .cs-text { font-size: 14.5px; color: var(--muted); line-height: 1.65; max-width: 420px; margin: 0 auto 24px; }
+
+    /* Newsletter */
+    .newsletter {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--r-lg);
+      padding: 48px 40px;
+      text-align: center;
+      max-width: 560px;
+      margin: 64px auto 0;
+      box-shadow: var(--shadow-sm);
+    }
+    .newsletter h3 {
+      font-size: 22px; font-weight: 800; letter-spacing: -0.025em;
+      color: var(--ink); margin-bottom: 10px;
+    }
+    .newsletter p {
+      font-size: 14.5px; color: var(--muted); line-height: 1.6;
+      margin-bottom: 24px;
+    }
+    .newsletter-form {
+      display: flex;
+      gap: 10px;
+      max-width: 380px;
+      margin: 0 auto;
+    }
+    .newsletter-input {
+      flex: 1;
+      padding: 11px 16px;
+      border-radius: var(--r-sm);
+      border: 1.5px solid var(--border);
+      font-size: 14px;
+      font-family: var(--font);
+      color: var(--ink);
+      background: var(--bg);
+      outline: none;
+      transition: border-color var(--t) var(--ease);
+    }
+    .newsletter-input:focus { border-color: var(--accent); }
+    .newsletter-input::placeholder { color: var(--muted); }
+    .newsletter-note {
+      font-size: 12px; color: var(--muted); margin-top: 12px;
+    }
+
+    /* Topics preview */
+    .topics {
+      margin-top: 64px;
+    }
+    .topics-intro {
+      font-size: 14px; color: var(--muted); margin-bottom: 20px; text-align: center;
+    }
+    .topics-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+    }
+    .topic-card {
+      padding: 22px 20px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--r-md);
+      transition: transform var(--t) var(--ease), box-shadow var(--t) var(--ease);
+    }
+    .topic-card:hover {
+      transform: translateY(-3px);
+      box-shadow: var(--shadow-md);
+    }
+    .topic-icon { font-size: 22px; margin-bottom: 10px; }
+    .topic-name {
+      font-size: 14px; font-weight: 700; color: var(--ink);
+      letter-spacing: -0.01em; margin-bottom: 4px;
+    }
+    .topic-desc { font-size: 12.5px; color: var(--muted); line-height: 1.5; }
+
+    @media (max-width: 768px) {
+      .blog-grid { grid-template-columns: 1fr; }
+      .topics-grid { grid-template-columns: 1fr; }
+      .newsletter { padding: 36px 24px; }
+      .newsletter-form { flex-direction: column; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navigation -->
+  <nav class="nav" id="navbar">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-logo">Musa Arradi <span>SEO & AI Search</span></a>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="index.html#experience">Experiencia</a></li>
+        <li><a href="projects.html">Proyectos</a></li>
+        <li><a href="blog.html" class="active">Blog</a></li>
+        <li class="nav-cta"><a href="index.html#contact">Contacto</a></li>
+      </ul>
+      <button class="hamburger" id="hamburger" aria-label="Abrir menú">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Page Header -->
+  <div class="page-header">
+    <div class="container">
+      <div class="badge" style="margin-bottom:16px;">Artículos</div>
+      <h1>Blog — SEO &amp; AI Search</h1>
+      <p>Perspectivas sobre SEO técnico, búsqueda generativa (GEO / AEO) y automatización de workflows para equipos de marketing.</p>
+    </div>
+  </div>
+
+  <!-- ═══ BLOG CONTENT ═════════════════════════════════════ -->
+  <section id="blog-content">
+    <div class="container">
+
+      <!-- Filters -->
+      <div class="blog-filters fi">
+        <button class="filter-pill active" data-filter="all">Todos</button>
+        <button class="filter-pill" data-filter="seo-tecnico">SEO Técnico</button>
+        <button class="filter-pill" data-filter="ai-search">AI Search</button>
+        <button class="filter-pill" data-filter="automatizacion">Automatización</button>
+        <button class="filter-pill" data-filter="estrategia">Estrategia</button>
+      </div>
+
+      <!-- Article Cards — Placeholder articles (ready for real content) -->
+      <div class="blog-grid" id="blogGrid">
+
+        <a href="#" class="card article-card fi" data-cat="ai-search" data-delay="0">
+          <div class="article-meta">
+            <span class="article-cat">AI Search</span>
+            <span class="article-meta-dot"></span>
+            <span>Próximamente</span>
+          </div>
+          <div class="article-title">GEO vs SEO: Cómo preparar tu contenido para la búsqueda generativa</div>
+          <p class="article-excerpt">Los LLMs están cambiando cómo los usuarios encuentran información. Aprende a estructurar contenidos para ser citado en ChatGPT, Perplexity y Gemini.</p>
+          <span class="article-read">Leer artículo</span>
+        </a>
+
+        <a href="#" class="card article-card fi" data-cat="automatizacion" data-delay="1">
+          <div class="article-meta">
+            <span class="article-cat">Automatización</span>
+            <span class="article-meta-dot"></span>
+            <span>Próximamente</span>
+          </div>
+          <div class="article-title">Automatiza tu keyword research con Make y DataForSEO API</div>
+          <p class="article-excerpt">Guía paso a paso para construir un workflow que extrae, clasifica y agrupa keywords automáticamente. Sin hojas de cálculo manuales.</p>
+          <span class="article-read">Leer artículo</span>
+        </a>
+
+        <a href="#" class="card article-card fi" data-cat="seo-tecnico" data-delay="2">
+          <div class="article-meta">
+            <span class="article-cat">SEO Técnico</span>
+            <span class="article-meta-dot"></span>
+            <span>Próximamente</span>
+          </div>
+          <div class="article-title">Auditoría de enlazado interno: el activo SEO más infrautilizado</div>
+          <p class="article-excerpt">El enlazado interno sigue siendo uno de los palancas de mayor ROI en SEO técnico. Aprende a auditarlo y optimizarlo correctamente.</p>
+          <span class="article-read">Leer artículo</span>
+        </a>
+
+        <a href="#" class="card article-card fi" data-cat="estrategia" data-delay="0">
+          <div class="article-meta">
+            <span class="article-cat">Estrategia</span>
+            <span class="article-meta-dot"></span>
+            <span>Próximamente</span>
+          </div>
+          <div class="article-title">Cómo medir el ROI del SEO: métricas que importan al negocio</div>
+          <p class="article-excerpt">Dejar de reportar posiciones y sesiones. Aprende a conectar el SEO con métricas de negocio: oportunidad, adquisición, ingresos.</p>
+          <span class="article-read">Leer artículo</span>
+        </a>
+
+        <a href="#" class="card article-card fi" data-cat="ai-search" data-delay="1">
+          <div class="article-meta">
+            <span class="article-cat">AI Search</span>
+            <span class="article-meta-dot"></span>
+            <span>Próximamente</span>
+          </div>
+          <div class="article-title">AEO: Optimización para motores de respuesta basados en IA</div>
+          <p class="article-excerpt">Answer Engine Optimization (AEO) aplicado: cómo estructurar FAQ, datos estructurados y entidades para dominar las respuestas de IA.</p>
+          <span class="article-read">Leer artículo</span>
+        </a>
+
+        <a href="#" class="card article-card fi" data-cat="automatizacion" data-delay="2">
+          <div class="article-meta">
+            <span class="article-cat">Automatización</span>
+            <span class="article-meta-dot"></span>
+            <span>Próximamente</span>
+          </div>
+          <div class="article-title">LLMs aplicados al SEO: casos de uso reales que funcionan</div>
+          <p class="article-excerpt">Qué puedes y qué no puedes delegar a los LLMs en tu flujo de trabajo SEO. Casos prácticos con resultados reales.</p>
+          <span class="article-read">Leer artículo</span>
+        </a>
+
+      </div>
+
+      <!-- Coming soon note -->
+      <div class="coming-soon fi">
+        <div class="cs-icon">✍️</div>
+        <div class="cs-title">Contenido en preparación</div>
+        <p class="cs-text">Los artículos se publicarán próximamente. Suscríbete para recibir una notificación cuando salga el primer post.</p>
+      </div>
+
+      <!-- Newsletter -->
+      <div class="newsletter fi">
+        <h3>No te pierdas el primer artículo</h3>
+        <p>Insights sobre SEO técnico, AI Search y automatización. Sin spam, solo contenido de valor.</p>
+        <form class="newsletter-form" onsubmit="handleSubscribe(event)">
+          <input type="email" class="newsletter-input" id="newsletter-email" placeholder="tu@email.com" required />
+          <button type="submit" class="btn btn-primary">Suscribirme</button>
+        </form>
+        <p class="newsletter-note" id="newsletter-msg">Suscripción gratuita · Sin spam · Cancelable en cualquier momento</p>
+      </div>
+
+      <!-- Topics preview -->
+      <div class="topics fi">
+        <p class="topics-intro" style="font-weight:600; color:var(--ink); margin-bottom:6px;">Temáticas que cubrirá este blog</p>
+        <p class="topics-intro">Contenido orientado a profesionales de SEO, marketing digital y growth.</p>
+        <div class="topics-grid">
+          <div class="topic-card">
+            <div class="topic-icon">🔧</div>
+            <div class="topic-name">SEO Técnico</div>
+            <div class="topic-desc">Crawling, indexación, Core Web Vitals, arquitectura y enlazado interno.</div>
+          </div>
+          <div class="topic-card">
+            <div class="topic-icon">🤖</div>
+            <div class="topic-name">AI Search &amp; GEO</div>
+            <div class="topic-desc">Optimización para ChatGPT, Perplexity, Gemini y motores de respuesta generativa.</div>
+          </div>
+          <div class="topic-card">
+            <div class="topic-icon">⚙️</div>
+            <div class="topic-name">Automatización SEO</div>
+            <div class="topic-desc">Workflows con Make, Python, APIs y LLMs aplicados a procesos SEO reales.</div>
+          </div>
+          <div class="topic-card">
+            <div class="topic-icon">📊</div>
+            <div class="topic-name">Analítica &amp; Reporting</div>
+            <div class="topic-desc">GSC, GA4, Looker Studio. Métricas que conectan SEO con impacto de negocio.</div>
+          </div>
+          <div class="topic-card">
+            <div class="topic-icon">🎯</div>
+            <div class="topic-name">Estrategia de Contenido</div>
+            <div class="topic-desc">Keyword research, intención de búsqueda, clustering y briefs orientados a conversión.</div>
+          </div>
+          <div class="topic-card">
+            <div class="topic-icon">🔗</div>
+            <div class="topic-name">Link Building Editorial</div>
+            <div class="topic-desc">Estrategias de autoridad: digital PR, menciones, citas y linkbuilding de calidad.</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <footer class="site-footer">
+    <p>© 2026 Musa Arradi · <a href="index.html">Home</a> · <a href="projects.html">Proyectos</a> · <a href="blog.html">Blog</a> · Barcelona</p>
+  </footer>
+
+  <script>
+    // Nav
+    const nav = document.getElementById('navbar');
+    window.addEventListener('scroll', () => nav.classList.toggle('scrolled', window.scrollY > 10), { passive: true });
+
+    // Hamburger
+    const ham = document.getElementById('hamburger');
+    const links = document.getElementById('navLinks');
+    ham.addEventListener('click', () => links.classList.toggle('open'));
+    links.querySelectorAll('a').forEach(a => a.addEventListener('click', () => links.classList.remove('open')));
+
+    // Fade-in
+    const obs = new IntersectionObserver(entries => {
+      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); } });
+    }, { threshold: 0.08 });
+    document.querySelectorAll('.fi').forEach(el => obs.observe(el));
+
+    // Category filter
+    document.querySelectorAll('.filter-pill').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.filter-pill').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        const filter = btn.dataset.filter;
+        document.querySelectorAll('.article-card').forEach(card => {
+          const show = filter === 'all' || card.dataset.cat === filter;
+          card.style.display = show ? '' : 'none';
+        });
+      });
+    });
+
+    // Newsletter
+    function handleSubscribe(e) {
+      e.preventDefault();
+      const msg = document.getElementById('newsletter-msg');
+      const btn = e.target.querySelector('button');
+      btn.textContent = '¡Suscrito! ✓';
+      btn.disabled = true;
+      btn.style.background = '#16a34a';
+      msg.textContent = 'Gracias. Te avisaremos cuando publiquemos el primer artículo.';
+      msg.style.color = '#16a34a';
+    }
+  </script>
+</body>
+</html>

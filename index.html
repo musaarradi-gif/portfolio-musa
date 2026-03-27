@@ -1,0 +1,687 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Musa Arradi &mdash; Technical SEO &amp; AI Search Specialist</title>
+  <meta name="description" content="Technical SEO &amp; AI Search Specialist. SEO t&eacute;cnico, automatizaci&oacute;n y estrategia orientada a negocio. Especializado en visibilidad org&aacute;nica en entornos de AI Search (GEO / AEO)." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+
+  <style>
+    /* ── Hero ──────────────────────────────────────────────── */
+    #hero {
+      padding: 140px 0 100px;
+      background: var(--surface);
+    }
+    .hero-inner {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 56px;
+      align-items: center;
+    }
+    .hero-name {
+      font-size: clamp(40px, 6.5vw, 56px);
+      font-weight: 800;
+      letter-spacing: -0.045em;
+      color: var(--ink);
+      line-height: 1.0;
+      margin-bottom: 10px;
+    }
+    .hero-title {
+      font-size: clamp(18px, 2.6vw, 22px);
+      font-weight: 600;
+      color: var(--ink-2);
+      margin-bottom: 8px;
+      letter-spacing: -0.01em;
+    }
+    .hero-subtitle {
+      font-size: 15.5px;
+      color: var(--muted);
+      line-height: 1.65;
+      max-width: 490px;
+      margin-bottom: 36px;
+    }
+    .hero-cta { display: flex; gap: 12px; flex-wrap: wrap; }
+    .hero-badge { margin-bottom: 22px; }
+
+    /* ── Hero Photo &mdash; Premium Component ──────────────── */
+    .hero-photo {
+      position: relative;
+      flex-shrink: 0;
+    }
+
+    .hero-photo-card {
+      position: relative;
+      background: linear-gradient(160deg, #f0f4f8 0%, #e8eef4 100%);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 10px 10px 0 10px;
+      box-shadow: var(--shadow-md);
+      overflow: hidden;
+      width: 230px;
+      transition: box-shadow 0.3s var(--ease), transform 0.3s var(--ease);
+    }
+
+    .hero-photo-card:hover {
+      transform: scale(1.025) translateY(-3px);
+      box-shadow: var(--shadow-lg);
+    }
+
+    /* Decorative gradient accent */
+    .hero-photo-card::before {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      height: 60%;
+      background: linear-gradient(to top, rgba(26,86,219,.06) 0%, transparent 100%);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .hero-photo-card img {
+      position: relative;
+      z-index: 1;
+      width: 100%;
+      aspect-ratio: 4 / 5;
+      object-fit: cover;
+      object-position: top center;
+      display: block;
+      border-radius: 12px 12px 0 0;
+      filter: contrast(1.04) brightness(1.03);
+    }
+
+    /* Decorative accent dot top-right */
+    .hero-photo-card::after {
+      content: '';
+      position: absolute;
+      top: 18px; right: 18px;
+      width: 8px; height: 8px;
+      border-radius: 50%;
+      background: var(--accent);
+      opacity: 0.6;
+      z-index: 2;
+    }
+
+    /* Outer ring frame */
+    .hero-photo-ring {
+      position: absolute;
+      inset: -8px;
+      border: 1.5px solid var(--border-soft);
+      border-radius: 26px;
+      pointer-events: none;
+    }
+
+    /* ── Value Snapshot ────────────────────────────────────── */
+    #value { padding: 72px 0; background: var(--bg); }
+    .value-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+    }
+    .value-card { padding: 26px 22px; }
+    .value-icon {
+      width: 42px; height: 42px;
+      background: var(--accent-soft);
+      border-radius: 11px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 19px;
+      margin-bottom: 14px;
+    }
+    .value-stat {
+      font-size: 22px;
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      color: var(--ink);
+      margin-bottom: 4px;
+    }
+    .value-desc { font-size: 13px; color: var(--muted); line-height: 1.5; }
+
+    /* ── Experience ────────────────────────────────────────── */
+    #experience { background: var(--surface); }
+    .exp-list { display: flex; flex-direction: column; }
+    .exp-item {
+      display: grid;
+      grid-template-columns: 14px 1fr;
+      gap: 0 28px;
+      padding: 30px 0;
+      border-bottom: 1px solid var(--border-soft);
+    }
+    .exp-item:last-child { border-bottom: none; }
+    .exp-timeline {
+      display: flex; flex-direction: column; align-items: center;
+      padding-top: 5px;
+    }
+    .exp-dot {
+      width: 10px; height: 10px;
+      border-radius: 50%;
+      background: var(--border);
+      outline: 2px solid var(--border);
+      outline-offset: 2px;
+      flex-shrink: 0;
+    }
+    .exp-item:first-child .exp-dot {
+      background: var(--accent);
+      outline-color: var(--accent-mid);
+    }
+    .exp-line {
+      width: 2px; flex: 1;
+      background: var(--border-soft);
+      margin-top: 7px;
+    }
+    .exp-item:last-child .exp-line { display: none; }
+    .exp-header {
+      display: flex; justify-content: space-between;
+      align-items: flex-start; gap: 12px;
+      margin-bottom: 8px; flex-wrap: wrap;
+    }
+    .exp-company {
+      font-size: 16.5px; font-weight: 800;
+      color: var(--ink); letter-spacing: -0.015em;
+    }
+    .exp-role {
+      font-size: 13.5px; font-weight: 500;
+      color: var(--accent); margin-top: 2px;
+    }
+    .exp-dates {
+      font-size: 11.5px; font-weight: 600;
+      color: var(--muted);
+      background: var(--pill-bg);
+      padding: 4px 11px; border-radius: 99px;
+      white-space: nowrap; flex-shrink: 0;
+      margin-top: 2px;
+      border: 1px solid var(--pill-border);
+    }
+    .exp-bullets { list-style: none; display: flex; flex-direction: column; gap: 5px; margin-top: 10px; }
+    .exp-bullets li {
+      font-size: 14px; color: var(--ink-2);
+      line-height: 1.5; padding-left: 16px; position: relative;
+    }
+    .exp-bullets li::before {
+      content: ''; position: absolute;
+      left: 0; top: 8px;
+      width: 5px; height: 5px;
+      background: var(--muted);
+      border-radius: 50%; opacity: 0.45;
+    }
+
+    /* ── Featured Projects ─────────────────────────────────── */
+    #projects { background: var(--bg); }
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+      margin-bottom: 36px;
+    }
+    .project-card { padding: 28px 24px; display: flex; flex-direction: column; gap: 12px; }
+    .project-num {
+      font-size: 11px; font-weight: 700;
+      letter-spacing: 0.12em; color: var(--accent); text-transform: uppercase;
+    }
+    .project-title {
+      font-size: 17px; font-weight: 700;
+      color: var(--ink); letter-spacing: -0.02em;
+      line-height: 1.25;
+    }
+    .project-desc { font-size: 13.5px; color: var(--muted); line-height: 1.6; flex: 1; }
+    .project-impact {
+      background: var(--accent-soft);
+      border-radius: var(--r-sm);
+      padding: 9px 12px;
+      font-size: 13px; color: var(--accent-dark);
+      font-weight: 500; line-height: 1.4;
+      display: flex; gap: 8px; align-items: flex-start;
+    }
+    .project-impact::before { content: '&#x2197;'; font-weight: 700; flex-shrink: 0; }
+    .project-cta { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 4px; }
+    .projects-more { text-align: center; }
+
+    /* ── Stack ─────────────────────────────────────────────── */
+    #stack { background: var(--surface); padding: 72px 0; }
+    .stack-pills { display: flex; flex-wrap: wrap; gap: 10px; }
+
+    /* ── About ─────────────────────────────────────────────── */
+    #about { background: var(--bg); }
+    .about-inner {
+      display: grid; grid-template-columns: 1fr 1.5fr;
+      gap: 60px; align-items: center;
+    }
+    .about-card {
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: var(--r-md); padding: 28px;
+      box-shadow: var(--shadow-sm);
+    }
+    .about-card-label {
+      font-size: 11px; font-weight: 700; letter-spacing: 0.1em;
+      text-transform: uppercase; color: var(--muted); margin-bottom: 16px;
+    }
+    .about-metric {
+      display: flex; align-items: center; gap: 12px;
+      padding: 10px 0; border-bottom: 1px solid var(--border-soft);
+    }
+    .about-metric:last-child { border-bottom: none; }
+    .metric-icon {
+      width: 36px; height: 36px; border-radius: 9px;
+      background: var(--accent-soft);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 16px; flex-shrink: 0;
+    }
+    .metric-label { font-size: 13px; font-weight: 600; color: var(--ink); }
+    .metric-value { font-size: 12px; color: var(--muted); }
+    .about-text {
+      font-size: 16px; line-height: 1.72; color: var(--ink-2);
+      margin-top: 12px;
+    }
+    .about-text strong { color: var(--ink); font-weight: 700; }
+
+    /* ── Contact ───────────────────────────────────────────── */
+    #contact { background: var(--ink); padding: 96px 0; }
+    .contact-inner { text-align: center; max-width: 600px; margin: 0 auto; }
+    .contact-eyebrow {
+      font-size: 11px; font-weight: 700; letter-spacing: 0.14em;
+      text-transform: uppercase; color: rgba(255,255,255,.4); margin-bottom: 16px;
+      display: block;
+    }
+    .contact-title {
+      font-size: clamp(30px, 5vw, 44px); font-weight: 800;
+      letter-spacing: -0.04em; color: #fff; line-height: 1.08; margin-bottom: 16px;
+    }
+    .contact-sub {
+      font-size: 15.5px; color: rgba(255,255,255,.5);
+      margin-bottom: 40px; line-height: 1.65;
+    }
+    .contact-links { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+
+    /* ── Responsive ────────────────────────────────────────── */
+    @media (max-width: 768px) {
+      #hero { padding: 110px 0 72px; }
+      .hero-inner { grid-template-columns: 1fr; text-align: center; }
+      .hero-photo { order: -1; display: flex; justify-content: center; }
+      .hero-photo-card { width: 180px; }
+      .hero-photo-ring { display: none; }
+      .hero-subtitle { max-width: 100%; }
+      .hero-cta { justify-content: center; }
+      .value-grid { grid-template-columns: 1fr 1fr; }
+      .projects-grid { grid-template-columns: 1fr; }
+      .about-inner { grid-template-columns: 1fr; gap: 36px; }
+      .exp-timeline { display: none; }
+      .exp-item { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 480px) {
+      .value-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navigation -->
+  <nav class="nav" id="navbar">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-logo">Musa Arradi <span>SEO &amp; AI Search</span></a>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="index.html#experience">Experiencia</a></li>
+        <li><a href="projects.html">Proyectos</a></li>
+        <li><a href="blog.html">Blog</a></li>
+        <li class="nav-cta"><a href="index.html#contact">Contacto</a></li>
+      </ul>
+      <button class="hamburger" id="hamburger" aria-label="Abrir men&uacute;">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section id="hero">
+    <div class="container">
+      <div class="hero-inner">
+        <div>
+          <div class="badge hero-badge">Disponible para nuevas oportunidades</div>
+          <h1 class="hero-name">Musa Arradi</h1>
+          <div class="hero-title">Technical SEO &amp; AI Search Specialist</div>
+          <p class="hero-subtitle">
+            SEO t&eacute;cnico, automatizaci&oacute;n y estrategia orientada a negocio.<br>
+            Especializado en visibilidad org&aacute;nica en buscadores tradicionales
+            y entornos de AI&nbsp;Search (GEO&nbsp;/&nbsp;AEO).
+          </p>
+          <div class="hero-cta">
+            <a href="#experience" class="btn btn-primary" id="cta-experience">
+              Ver Experiencia
+              <svg width="13" height="13" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </a>
+            <a href="projects.html" class="btn btn-secondary" id="cta-projects">Ver Proyectos</a>
+            <a href="#contact" class="btn btn-ghost" id="cta-contact">Contactar</a>
+          </div>
+        </div>
+        <div class="hero-photo">
+          <div class="hero-photo-card">
+            <picture>
+              <source srcset="profile.webp" type="image/webp">
+              <img id="profile-img" src="profile.webp" alt="Musa Arradi - Technical SEO &amp; AI Search Specialist" />
+            </picture>
+          </div>
+          <div class="hero-photo-ring"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <hr class="divider" />
+
+  <!-- VALUE SNAPSHOT -->
+  <section id="value">
+    <div class="container">
+      <div class="value-grid">
+        <div class="card value-card fi" data-delay="0">
+          <div class="value-icon">&#128197;</div>
+          <div class="value-stat">+5 a&ntilde;os</div>
+          <div class="value-desc">en SEO &amp; Estrategia Digital</div>
+        </div>
+        <div class="card value-card fi" data-delay="1">
+          <div class="value-icon">&#129302;</div>
+          <div class="value-stat">GEO / AEO</div>
+          <div class="value-desc">Especializado en AI Search y b&uacute;squeda generativa</div>
+        </div>
+        <div class="card value-card fi" data-delay="2">
+          <div class="value-icon">&#9881;&#65039;</div>
+          <div class="value-stat">Automation</div>
+          <div class="value-desc">Workflows escalables con APIs, Make y LLMs</div>
+        </div>
+        <div class="card value-card fi" data-delay="3">
+          <div class="value-icon">&#128200;</div>
+          <div class="value-stat">Data First</div>
+          <div class="value-desc">Decisiones orientadas a impacto en negocio</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <hr class="divider" />
+
+  <!-- EXPERIENCE -->
+  <section id="experience">
+    <div class="container">
+      <div class="section-header fi">
+        <span class="section-label">Trayectoria</span>
+        <h2 class="section-title">Experiencia profesional</h2>
+        <p class="section-subtitle">M&aacute;s de 5 a&ntilde;os construyendo estrategias de visibilidad org&aacute;nica en entornos de alta exigencia.</p>
+      </div>
+      <div class="exp-list">
+
+        <div class="exp-item fi">
+          <div class="exp-timeline"><div class="exp-dot"></div><div class="exp-line"></div></div>
+          <div>
+            <div class="exp-header">
+              <div>
+                <div class="exp-company">AI IMPACTO</div>
+                <div class="exp-role">Consultor SEO &amp; GEO (IA + Automatizaci&oacute;n) &middot; Barcelona</div>
+              </div>
+              <div class="exp-dates">May 2025 &ndash; Presente</div>
+            </div>
+            <ul class="exp-bullets">
+              <li>Dise&ntilde;o de estrategias SEO alineadas con crecimiento de negocio y adquisici&oacute;n.</li>
+              <li>Construcci&oacute;n de workflows automatizados para research, clustering y generaci&oacute;n de contenido.</li>
+              <li>Integraci&oacute;n de APIs (DataForSEO, scraping) para an&aacute;lisis profundo de SERPs y detecci&oacute;n de oportunidades.</li>
+              <li>Optimizaci&oacute;n de contenidos para maximizar la citaci&oacute;n en motores de b&uacute;squeda basados en IA (GEO).</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="exp-item fi">
+          <div class="exp-timeline"><div class="exp-dot"></div><div class="exp-line"></div></div>
+          <div>
+            <div class="exp-header">
+              <div>
+                <div class="exp-company">iLERNA</div>
+                <div class="exp-role">SEO Specialist (Organic Search &amp; AI Search) &middot; Barcelona</div>
+              </div>
+              <div class="exp-dates">Sep 2025 &ndash; Presente</div>
+            </div>
+            <ul class="exp-bullets">
+              <li>Definici&oacute;n y ejecuci&oacute;n de la estrategia de Organic Search para crecimiento org&aacute;nico sostenido.</li>
+              <li>Mejora de visibilidad en buscadores tradicionales y entornos de AI Search (LLMs).</li>
+              <li>Auditor&iacute;as t&eacute;cnicas recurrentes: indexaci&oacute;n, arquitectura, enlazado interno y se&ntilde;ales sem&aacute;nticas.</li>
+              <li>Sistemas de reporting automatizado con GSC, GA4 y Looker Studio.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="exp-item fi">
+          <div class="exp-timeline"><div class="exp-dot"></div><div class="exp-line"></div></div>
+          <div>
+            <div class="exp-header">
+              <div>
+                <div class="exp-company">Freelance</div>
+                <div class="exp-role">SEO, SEM &amp; Data Specialist &middot; Barcelona</div>
+              </div>
+              <div class="exp-dates">2023 &ndash; 2025</div>
+            </div>
+            <ul class="exp-bullets">
+              <li>Consultor&iacute;a integral en SEO, SEM y anal&iacute;tica para empresas de distintos sectores.</li>
+              <li>Transformaci&oacute;n de grandes vol&uacute;menes de datos en estrategias accionables orientadas a ROI.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="exp-item fi">
+          <div class="exp-timeline"><div class="exp-dot"></div><div class="exp-line"></div></div>
+          <div>
+            <div class="exp-header">
+              <div>
+                <div class="exp-company">Opt Media</div>
+                <div class="exp-role">T&eacute;cnico SEO &middot; Barcelona</div>
+              </div>
+              <div class="exp-dates">2021 &ndash; 2023</div>
+            </div>
+            <ul class="exp-bullets">
+              <li>Gesti&oacute;n integral de proyectos SEO y SEM: desde concepci&oacute;n estrat&eacute;gica hasta an&aacute;lisis post-lanzamiento.</li>
+              <li>An&aacute;lisis de datos a gran escala para optimizar campa&ntilde;as y generar incrementos medibles de conversi&oacute;n.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="exp-item fi">
+          <div class="exp-timeline"><div class="exp-dot"></div><div class="exp-line"></div></div>
+          <div>
+            <div class="exp-header">
+              <div>
+                <div class="exp-company">Brave DMA &middot; Digital Marketing Agency</div>
+                <div class="exp-role">T&eacute;cnico SEO &middot; Barcelona</div>
+              </div>
+              <div class="exp-dates">2020 &ndash; 2021</div>
+            </div>
+            <ul class="exp-bullets">
+              <li>Estrategia SEO integral para cartera de clientes PYME: keyword research, auditor&iacute;as y linkbuilding.</li>
+              <li>Gesti&oacute;n de campa&ntilde;as SEM (Google Ads, Facebook Ads) y optimizaci&oacute;n de e-commerce.</li>
+            </ul>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <hr class="divider" />
+
+  <!-- FEATURED PROJECTS -->
+  <section id="projects">
+    <div class="container">
+      <div class="section-header fi">
+        <span class="section-label">Casos de uso</span>
+        <h2 class="section-title">Proyectos destacados</h2>
+        <p class="section-subtitle">Sistemas construidos para escalar visibilidad org&aacute;nica y reducir dependencia manual.</p>
+      </div>
+      <div class="projects-grid">
+
+        <div class="card project-card fi" data-delay="0">
+          <div class="project-num">Proyecto 01</div>
+          <h3 class="project-title">Sistema de Automatizaci&oacute;n SEO</h3>
+          <p class="project-desc">Workflow con Make + APIs para automatizar keyword research, clustering y generaci&oacute;n de contenido a escala.</p>
+          <div class="project-impact">Reducci&oacute;n del trabajo manual y producci&oacute;n de contenido escalable sin aumentar equipo.</div>
+          <div class="project-cta">
+            <a href="projects.html#p-automation" class="btn btn-sm btn-ghost">Ver caso &rarr;</a>
+          </div>
+        </div>
+
+        <div class="card project-card fi" data-delay="1">
+          <div class="project-num">Proyecto 02</div>
+          <h3 class="project-title">AI Search Optimization (GEO)</h3>
+          <p class="project-desc">Estructuraci&oacute;n de contenidos para mejorar la citaci&oacute;n en motores de b&uacute;squeda basados en IA (ChatGPT, Perplexity, Gemini).</p>
+          <div class="project-impact">Mayor visibilidad en entornos de b&uacute;squeda generativa: marca citada como fuente de referencia.</div>
+          <div class="project-cta">
+            <a href="projects.html#p-geo" class="btn btn-sm btn-ghost">Ver caso &rarr;</a>
+          </div>
+        </div>
+
+        <div class="card project-card fi" data-delay="2">
+          <div class="project-num">Proyecto 03</div>
+          <h3 class="project-title">Technical SEO Audit System</h3>
+          <p class="project-desc">Proceso de auditor&iacute;a replicable con Screaming Frog + an&aacute;lisis personalizado para detectar problemas cr&iacute;ticos de indexaci&oacute;n.</p>
+          <div class="project-impact">Mejora consistente de arquitectura y rendimiento de indexaci&oacute;n en m&uacute;ltiples proyectos.</div>
+          <div class="project-cta">
+            <a href="projects.html#p-audit" class="btn btn-sm btn-ghost">Ver caso &rarr;</a>
+          </div>
+        </div>
+
+      </div>
+      <div class="projects-more fi">
+        <a href="projects.html" class="btn btn-secondary">Ver todos los proyectos &rarr;</a>
+      </div>
+    </div>
+  </section>
+
+  <hr class="divider" />
+
+  <!-- TECH STACK -->
+  <section id="stack">
+    <div class="container">
+      <div class="section-header fi">
+        <span class="section-label">Herramientas</span>
+        <h2 class="section-title">Stack tecnol&oacute;gico</h2>
+      </div>
+      <div class="stack-pills fi">
+        <span class="pill"><span class="pill-dot"></span>Google Search Console</span>
+        <span class="pill"><span class="pill-dot"></span>GA4</span>
+        <span class="pill"><span class="pill-dot"></span>Ahrefs</span>
+        <span class="pill"><span class="pill-dot"></span>Semrush</span>
+        <span class="pill"><span class="pill-dot"></span>Screaming Frog</span>
+        <span class="pill"><span class="pill-dot"></span>DataForSEO</span>
+        <span class="pill"><span class="pill-dot"></span>Make</span>
+        <span class="pill"><span class="pill-dot"></span>Looker Studio</span>
+        <span class="pill"><span class="pill-dot"></span>APIs</span>
+        <span class="pill"><span class="pill-dot"></span>Python</span>
+        <span class="pill"><span class="pill-dot"></span>ChatGPT / LLMs</span>
+        <span class="pill"><span class="pill-dot"></span>Google Ads</span>
+      </div>
+    </div>
+  </section>
+
+  <hr class="divider" />
+
+  <!-- ABOUT -->
+  <section id="about">
+    <div class="container">
+      <div class="about-inner">
+
+        <div class="about-card fi">
+          <div class="about-card-label">En n&uacute;meros</div>
+          <div class="about-metric">
+            <div class="metric-icon">&#128202;</div>
+            <div>
+              <div class="metric-label">+5 a&ntilde;os de experiencia</div>
+              <div class="metric-value">SEO &amp; Digital Strategy</div>
+            </div>
+          </div>
+          <div class="about-metric">
+            <div class="metric-icon">&#128269;</div>
+            <div>
+              <div class="metric-label">Especialidad en AI Search</div>
+              <div class="metric-value">GEO / AEO &mdash; B&uacute;squeda generativa</div>
+            </div>
+          </div>
+          <div class="about-metric">
+            <div class="metric-icon">&#9889;</div>
+            <div>
+              <div class="metric-label">Automatizaci&oacute;n de workflows</div>
+              <div class="metric-value">Make, APIs, LLMs, Python</div>
+            </div>
+          </div>
+          <div class="about-metric">
+            <div class="metric-icon">&#128205;</div>
+            <div>
+              <div class="metric-label">Barcelona, Espa&ntilde;a</div>
+              <div class="metric-value">Disponible para remoto / h&iacute;brido</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="fi">
+          <span class="section-label">Sobre m&iacute;</span>
+          <h2 class="section-title">Orientado a impacto,<br>no a tareas</h2>
+          <p class="about-text">
+            Soy un especialista SEO enfocado en la intersecci&oacute;n entre <strong>SEO t&eacute;cnico, automatizaci&oacute;n e IA aplicada a la b&uacute;squeda</strong>. Dise&ntilde;o sistemas escalables para mejorar la visibilidad org&aacute;nica y alinear el SEO con impacto real en el negocio.
+          </p>
+          <p class="about-text" style="margin-top:14px;">
+            Mi metodolog&iacute;a combina <strong>rigor t&eacute;cnico</strong>, an&aacute;lisis de datos y criterio estrat&eacute;gico para construir soluciones que funcionan a largo plazo. No ejecuto tareas aisladas: construyo sistemas.
+          </p>
+          <div style="margin-top:30px; display:flex; gap:12px; flex-wrap:wrap;">
+            <a href="#contact" class="btn btn-primary">Hablemos &rarr;</a>
+            <a href="projects.html" class="btn btn-secondary">Ver proyectos</a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <div class="container">
+      <div class="contact-inner fi">
+        <span class="contact-eyebrow">Contacto</span>
+        <h2 class="contact-title">Let's work together</h2>
+        <p class="contact-sub">&iquest;Buscas un especialista SEO que una el rigor t&eacute;cnico con visi&oacute;n estrat&eacute;gica y automatizaci&oacute;n? Hablemos.</p>
+        <div class="contact-links">
+          <a href="mailto:musa.arradi@gmail.com" class="btn btn-white" id="contact-email">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><rect x="2" y="4" width="20" height="16" rx="2" stroke="currentColor" stroke-width="2"/><path d="m2 7 10 7 10-7" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+            musa.arradi@gmail.com
+          </a>
+          <a href="https://www.linkedin.com/in/musa-arradi" target="_blank" rel="noopener" class="btn btn-light" id="contact-linkedin">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452z"/></svg>
+            LinkedIn
+          </a>
+          <a href="tel:+34672926160" class="btn btn-light" id="contact-phone">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.08 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3 1.18h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L7.09 8.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            672 926 160
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="site-footer">
+    <p>&copy; 2026 Musa Arradi &middot; <a href="index.html">Home</a> &middot; <a href="projects.html">Proyectos</a> &middot; <a href="blog.html">Blog</a> &middot; Barcelona</p>
+  </footer>
+
+  <script>
+    const nav = document.getElementById('navbar');
+    window.addEventListener('scroll', () => nav.classList.toggle('scrolled', window.scrollY > 10), { passive: true });
+
+    const ham = document.getElementById('hamburger');
+    const links = document.getElementById('navLinks');
+    ham.addEventListener('click', () => links.classList.toggle('open'));
+    links.querySelectorAll('a').forEach(a => a.addEventListener('click', () => links.classList.remove('open')));
+
+    const obs = new IntersectionObserver(entries => {
+      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); } });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.fi').forEach(el => obs.observe(el));
+
+    const img = document.getElementById('profile-img');
+    if (img) img.onerror = () => { img.parentElement.style.display = 'none'; };
+  </script>
+</body>
+</html>
