@@ -16,7 +16,7 @@ html { scroll-behavior: smooth; }
   --border-soft:  #edf0f5;
   --ink:          #0d1117;
   --ink-2:        #374151;
-  --muted:        #6b7280;
+  --muted:        #5c6570;
   --accent:       #1a56db;
   --accent-dark:  #0e3992;
   --accent-soft:  #eff4ff;
@@ -25,9 +25,9 @@ html { scroll-behavior: smooth; }
   --pill-border:  #dde3eb;
 
   /* Shadows */
-  --shadow-sm:    0 1px 3px rgba(0,0,0,.05), 0 2px 8px rgba(0,0,0,.04);
-  --shadow-md:    0 2px 6px rgba(0,0,0,.06), 0 6px 20px rgba(0,0,0,.07);
-  --shadow-lg:    0 6px 12px rgba(0,0,0,.07), 0 16px 40px rgba(0,0,0,.10);
+  --shadow-sm:    0 1px 2px rgba(0,0,0,.04), 0 2px 6px rgba(0,0,0,.04);
+  --shadow-md:    0 2px 8px rgba(0,0,0,.05), 0 8px 24px rgba(0,0,0,.07);
+  --shadow-lg:    0 4px 12px rgba(0,0,0,.07), 0 20px 48px rgba(0,0,0,.10);
 
   /* Radii */
   --r-sm:  8px;
@@ -42,7 +42,7 @@ html { scroll-behavior: smooth; }
 
   /* Transition */
   --ease:  cubic-bezier(.4, 0, .2, 1);
-  --t:     0.22s;
+  --t:     0.2s;
 }
 
 /* ─── Base ─────────────────────────────────────────────────── */
@@ -289,9 +289,9 @@ hr.divider {
               border-color var(--t) var(--ease);
 }
 .card:hover {
-  transform: translateY(-4px);
+  transform: translateY(-3px);
   box-shadow: var(--shadow-lg);
-  border-color: #d5dce6;
+  border-color: #cdd5e0;
 }
 
 /* Pills */
@@ -335,6 +335,13 @@ hr.divider {
   font-size: 11.5px;
   font-weight: 600;
   color: var(--accent-dark);
+  transition: background var(--t) var(--ease), color var(--t) var(--ease),
+              border-color var(--t) var(--ease);
+}
+.tech-pill:hover {
+  background: var(--accent);
+  color: #fff;
+  border-color: var(--accent);
 }
 
 /* ─── Badge / Eyebrow ──────────────────────────────────────── */
@@ -374,19 +381,19 @@ hr.divider {
 /* ─── Footer ────────────────────────────────────────────────── */
 .site-footer {
   background: var(--ink);
-  padding: 28px 24px;
+  padding: 32px 24px;
   text-align: center;
 }
 .site-footer p {
-  font-size: 12px;
-  color: rgba(255,255,255,.3);
+  font-size: 12.5px;
+  color: rgba(255,255,255,.35);
 }
 .site-footer a {
-  color: rgba(255,255,255,.45);
+  color: rgba(255,255,255,.5);
   text-decoration: none;
   transition: color var(--t) var(--ease);
 }
-.site-footer a:hover { color: rgba(255,255,255,.8); }
+.site-footer a:hover { color: rgba(255,255,255,.85); }
 
 /* ─── Page Header (inner pages) ─────────────────────────────── */
 .page-header {
