@@ -9,9 +9,18 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="styles.css" />
-  <link rel="icon" href="/favicon.ico" />
-  <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+  <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+  <link rel="icon" href="favicon.png" type="image/png" />
+  <link rel="apple-touch-icon" href="apple-touch-icon.png" />
   <meta name="theme-color" content="#0f172a" />
+  <meta property="og:title" content="Blog — Musa Arradi · SEO & AI Search" />
+  <meta property="og:description" content="Artículos sobre SEO técnico, AI Search (GEO/AEO) y automatización de workflows." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://portfolio-musa-phi.vercel.app/blog.html" />
+  <meta property="og:image" content="https://portfolio-musa-phi.vercel.app/profile.webp" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Blog — Musa Arradi · SEO & AI Search" />
+  <meta name="twitter:image" content="https://portfolio-musa-phi.vercel.app/profile.webp" />
 
   <style>
     /* ── Blog page styles ───────────────────────────────── */
@@ -255,7 +264,7 @@
       <!-- Article Cards — Placeholder articles (ready for real content) -->
       <div class="blog-grid" id="blogGrid">
 
-        <a href="javascript:void(0)" class="card article-card fi" data-cat="ai-search" data-delay="0">
+        <div class="card article-card fi" data-cat="ai-search" data-delay="0">
           <div class="article-meta">
             <span class="article-cat">AI Search</span>
             <span class="article-meta-dot"></span>
@@ -263,10 +272,10 @@
           </div>
           <div class="article-title">GEO vs SEO: Cómo preparar tu contenido para la búsqueda generativa</div>
           <p class="article-excerpt">Los LLMs están cambiando cómo los usuarios encuentran información. Aprende a estructurar contenidos para ser citado en ChatGPT, Perplexity y Gemini.</p>
-          <span class="article-read">Leer artículo</span>
-        </a>
+          <span class="article-read">Próximamente</span>
+        </div>
 
-        <a href="javascript:void(0)" class="card article-card fi" data-cat="automatizacion" data-delay="1">
+        <div class="card article-card fi" data-cat="automatizacion" data-delay="1">
           <div class="article-meta">
             <span class="article-cat">Automatización</span>
             <span class="article-meta-dot"></span>
@@ -274,10 +283,10 @@
           </div>
           <div class="article-title">Automatiza tu keyword research con Make y DataForSEO API</div>
           <p class="article-excerpt">Guía paso a paso para construir un workflow que extrae, clasifica y agrupa keywords automáticamente. Sin hojas de cálculo manuales.</p>
-          <span class="article-read">Leer artículo</span>
-        </a>
+          <span class="article-read">Próximamente</span>
+        </div>
 
-        <a href="javascript:void(0)" class="card article-card fi" data-cat="seo-tecnico" data-delay="2">
+        <div class="card article-card fi" data-cat="seo-tecnico" data-delay="2">
           <div class="article-meta">
             <span class="article-cat">SEO Técnico</span>
             <span class="article-meta-dot"></span>
@@ -285,10 +294,10 @@
           </div>
           <div class="article-title">Auditoría de enlazado interno: el activo SEO más infrautilizado</div>
           <p class="article-excerpt">El enlazado interno sigue siendo uno de los palancas de mayor ROI en SEO técnico. Aprende a auditarlo y optimizarlo correctamente.</p>
-          <span class="article-read">Leer artículo</span>
-        </a>
+          <span class="article-read">Próximamente</span>
+        </div>
 
-        <a href="javascript:void(0)" class="card article-card fi" data-cat="estrategia" data-delay="0">
+        <div class="card article-card fi" data-cat="estrategia" data-delay="0">
           <div class="article-meta">
             <span class="article-cat">Estrategia</span>
             <span class="article-meta-dot"></span>
@@ -296,10 +305,10 @@
           </div>
           <div class="article-title">Cómo medir el ROI del SEO: métricas que importan al negocio</div>
           <p class="article-excerpt">Dejar de reportar posiciones y sesiones. Aprende a conectar el SEO con métricas de negocio: oportunidad, adquisición, ingresos.</p>
-          <span class="article-read">Leer artículo</span>
-        </a>
+          <span class="article-read">Próximamente</span>
+        </div>
 
-        <a href="javascript:void(0)" class="card article-card fi" data-cat="ai-search" data-delay="1">
+        <div class="card article-card fi" data-cat="ai-search" data-delay="1">
           <div class="article-meta">
             <span class="article-cat">AI Search</span>
             <span class="article-meta-dot"></span>
@@ -307,10 +316,10 @@
           </div>
           <div class="article-title">AEO: Optimización para motores de respuesta basados en IA</div>
           <p class="article-excerpt">Answer Engine Optimization (AEO) aplicado: cómo estructurar FAQ, datos estructurados y entidades para dominar las respuestas de IA.</p>
-          <span class="article-read">Leer artículo</span>
-        </a>
+          <span class="article-read">Próximamente</span>
+        </div>
 
-        <a href="javascript:void(0)" class="card article-card fi" data-cat="automatizacion" data-delay="2">
+        <div class="card article-card fi" data-cat="automatizacion" data-delay="2">
           <div class="article-meta">
             <span class="article-cat">Automatización</span>
             <span class="article-meta-dot"></span>
@@ -318,8 +327,8 @@
           </div>
           <div class="article-title">LLMs aplicados al SEO: casos de uso reales que funcionan</div>
           <p class="article-excerpt">Qué puedes y qué no puedes delegar a los LLMs en tu flujo de trabajo SEO. Casos prácticos con resultados reales.</p>
-          <span class="article-read">Leer artículo</span>
-        </a>
+          <span class="article-read">Próximamente</span>
+        </div>
 
       </div>
 
