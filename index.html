@@ -127,31 +127,43 @@
     }
 
     /* ── Value Snapshot ────────────────────────────────────── */
-    #value { padding: 72px 0; background: var(--bg); }
+    #value { padding: 80px 0; background: var(--bg); }
     .value-grid {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
-      gap: 16px;
+      gap: 20px;
     }
-    .value-card { padding: 26px 22px; }
+    .value-card { 
+      padding: 32px 24px; 
+      display: flex; 
+      flex-direction: column;
+      height: 100%;
+    }
     .value-icon {
-      width: 42px; height: 42px;
+      width: 44px; height: 44px;
       background: var(--accent-soft);
-      border-radius: 11px;
+      border-radius: 12px;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 19px;
-      margin-bottom: 14px;
+      margin-bottom: 20px;
+      color: var(--accent);
+      flex-shrink: 0;
     }
-    .value-stat {
-      font-size: 22px;
+    .value-title {
+      font-size: 18px;
       font-weight: 800;
-      letter-spacing: -0.03em;
+      letter-spacing: -0.02em;
       color: var(--ink);
-      margin-bottom: 4px;
+      margin-bottom: 10px;
+      line-height: 1.25;
     }
-    .value-desc { font-size: 13px; color: var(--muted); line-height: 1.5; }
+    .value-desc { 
+      font-size: 13.5px; 
+      color: var(--muted); 
+      line-height: 1.6;
+      font-weight: 400;
+    }
 
     /* ── Experience ────────────────────────────────────────── */
     #experience { background: var(--surface); }
@@ -388,26 +400,39 @@
   <section id="value">
     <div class="container">
       <div class="value-grid">
+
         <div class="card value-card fi" data-delay="0">
-          <div class="value-icon">&#128197;</div>
-          <div class="value-stat">+5 a&ntilde;os</div>
-          <div class="value-desc">en SEO &amp; Estrategia Digital</div>
+          <div class="value-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="8" rx="2" ry="2"></rect><rect x="2" y="14" width="20" height="8" rx="2" ry="2"></rect><line x1="6" y1="6" x2="6.01" y2="6"></line><line x1="6" y1="18" x2="6.01" y2="18"></line></svg>
+          </div>
+          <h3 class="value-title">Technical SEO Systems</h3>
+          <p class="value-desc">Arquitectura, indexaci&oacute;n y automatizaci&oacute;n orientadas a impacto real en entornos complejos.</p>
         </div>
+
         <div class="card value-card fi" data-delay="1">
-          <div class="value-icon">&#129302;</div>
-          <div class="value-stat">GEO / AEO</div>
-          <div class="value-desc">Especializado en AI Search y b&uacute;squeda generativa</div>
+          <div class="value-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275L12 3Z"></path><path d="M5 3v4"></path><path d="M19 17v4"></path><path d="M3 5h4"></path><path d="M17 19h4"></path></svg>
+          </div>
+          <h3 class="value-title">AI Search / GEO / AEO</h3>
+          <p class="value-desc">Optimizaci&oacute;n avanzada para buscadores tradicionales y nuevos motores generativos (LLMs).</p>
         </div>
+
         <div class="card value-card fi" data-delay="2">
-          <div class="value-icon">&#9881;&#65039;</div>
-          <div class="value-stat">Automation</div>
-          <div class="value-desc">Workflows escalables con APIs, Make y LLMs</div>
+          <div class="value-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v4"></path><path d="m16.2 7.8 2.9-2.9"></path><path d="M18 12h4"></path><path d="m16.2 16.2 2.9 2.9"></path><path d="M12 18v4"></path><path d="m4.9 19.1 2.9-2.9"></path><path d="M2 12h4"></path><path d="m4.9 4.9 2.9 2.9"></path></svg>
+          </div>
+          <h3 class="value-title">Agentic Workflows</h3>
+          <p class="value-desc">Integraci&oacute;n de Antigravity, Claude y APIs para procesos aut&oacute;nomos con supervisi&oacute;n humana.</p>
         </div>
+
         <div class="card value-card fi" data-delay="3">
-          <div class="value-icon">&#128200;</div>
-          <div class="value-stat">Data First</div>
-          <div class="value-desc">Decisiones orientadas a impacto en negocio</div>
+          <div class="value-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5" rx="9" ry="3"></ellipse><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"></path><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"></path></svg>
+          </div>
+          <h3 class="value-title">Data &amp; Integrations</h3>
+          <p class="value-desc">Search Console API, MCP y workflows conectados para escalar la toma de decisiones basada en datos.</p>
         </div>
+
       </div>
     </div>
   </section>
@@ -726,33 +751,41 @@
       <div class="about-inner">
 
         <div class="about-card fi">
-          <div class="about-card-label">En n&uacute;meros</div>
+          <div class="about-card-label">Expertise Key</div>
           <div class="about-metric">
-            <div class="metric-icon">&#128202;</div>
+            <div class="metric-icon">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="color: var(--accent)"><path d="m21 16-4 4-4-4"></path><path d="M17 20V4"></path><path d="m3 8 4-4 4 4"></path><path d="M7 4v16"></path></svg>
+            </div>
             <div>
-              <div class="metric-label">+5 a&ntilde;os de experiencia</div>
-              <div class="metric-value">SEO &amp; Digital Strategy</div>
+              <div class="metric-label">Technical SEO</div>
+              <div class="metric-value">Systems &amp; Architecture</div>
             </div>
           </div>
           <div class="about-metric">
-            <div class="metric-icon">&#128269;</div>
+            <div class="metric-icon">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="color: var(--accent)"><path d="M12 3a9 9 0 1 0 9 9 9.75 9.75 0 0 0-6.74-9.31"></path><path d="M18.39 8.26a9.25 9.25 0 0 0-14.66 4.27"></path><path d="M22.69 11.8a9.25 9.25 0 0 0-21.38 0"></path><path d="M19.89 15.31a9.25 9.25 0 0 0-15.78-4.26"></path></svg>
+            </div>
             <div>
-              <div class="metric-label">Especialidad en AI Search</div>
-              <div class="metric-value">GEO / AEO &mdash; B&uacute;squeda generativa</div>
+              <div class="metric-label">AI Search (GEO)</div>
+              <div class="metric-value">Optimization for LLMs</div>
             </div>
           </div>
           <div class="about-metric">
-            <div class="metric-icon">&#9889;</div>
+            <div class="metric-icon">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="color: var(--accent)"><path d="M7 11V7l5-5 5 5v4"></path><path d="M21 12H3"></path><path d="m3 12 3 3 5-5 5 5 3-3"></path></svg>
+            </div>
             <div>
-              <div class="metric-label">Automatizaci&oacute;n de workflows</div>
-              <div class="metric-value">Make, APIs, LLMs, Python</div>
+              <div class="metric-label">Workflows</div>
+              <div class="metric-value">Agentic &amp; API Systems</div>
             </div>
           </div>
           <div class="about-metric">
-            <div class="metric-icon">&#128205;</div>
+            <div class="metric-icon">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="color: var(--accent)"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+            </div>
             <div>
-              <div class="metric-label">Barcelona, Espa&ntilde;a</div>
-              <div class="metric-value">Disponible para remoto / h&iacute;brido</div>
+              <div class="metric-label">Barcelona, España</div>
+              <div class="metric-value">Remote / Hybrid Focus</div>
             </div>
           </div>
         </div>
