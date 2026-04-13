@@ -43,7 +43,9 @@
     .post-body .highlight { background-color: rgba(234, 179, 8, 0.1); border-left: 4px solid #eab308; padding: 16px 20px; margin: 24px 0; border-radius: 0 8px 8px 0; }
     .post-body .highlight p { margin-bottom: 0; font-size: 16px; }
     
-    .post-placeholder-img { width: 100%; height: auto; aspect-ratio: 16/9; background: var(--surface); border: 1px dashed var(--border); border-radius: 8px; display: flex; align-items: center; justify-content: center; color: var(--muted); margin: 24px 0; font-size: 14px; text-align: center; padding: 20px; flex-direction: column; gap: 8px; }
+    .post-body figure { margin: 0; padding: 0; }
+    .post-body img.post-img { width: 100%; height: auto; border: 1px solid var(--border); border-radius: 8px; margin: 24px 0 8px; display: block; box-shadow: var(--shadow-sm); }
+    .post-img-caption { text-align: center; font-size: 13.5px; color: var(--muted); margin-bottom: 32px; }
     
     .post-footer { margin-top: 64px; padding-top: 48px; border-top: 1px solid var(--border-soft); text-align: center; }
   </style>
@@ -109,10 +111,10 @@
             <li>Si ves fuentes como <code>perplexity</code> o <code>chatgpt</code>, significa que la herramienta no está preparada y tienes visitas perdiéndose en el canal <em>Unassigned</em>.</li>
         </ol>
 
-        <div class="post-placeholder-img">
-            <span>[Espacio para la Captura 1]</span>
-            <span style="opacity:0.75; font-size:12px;">Tabla con dimensión "session source" y búsqueda "Ai". Fuentes como perplexity o chatgpt etiquetadas como Unassigned.</span>
-        </div>
+        <figure>
+            <img src="images/ga4-trafico-ia-fuente-sesion.jpg" alt="Tabla con dimensión session source y búsqueda Ai. Fuentes como perplexity o chatgpt etiquetadas como Unassigned" class="post-img" loading="lazy">
+            <figcaption class="post-img-caption">Tabla con dimensión "session source" y búsqueda "Ai". Fuentes como perplexity o chatgpt etiquetadas como Unassigned.</figcaption>
+        </figure>
 
         <h3>Paso 2: Crear una agrupación de canales personalizada</h3>
         <p>Para que GA4 clasifique este tráfico automáticamente, debemos crear una nueva agrupación.</p>
@@ -121,10 +123,10 @@
             <li>Entra en <strong>visualización de datos (Data display)</strong> y luego a la sección de <strong>Channel groups</strong>.</li>
         </ol>
 
-        <div class="post-placeholder-img">
-            <span>[Espacio para la Captura 2]</span>
-            <span style="opacity:0.75; font-size:12px;">Listado de grupos sobre Default Channel Group. Destacar opción "Copiar para crear uno nuevo".</span>
-        </div>
+        <figure>
+            <img src="images/ga4-channel-group-copiar.jpg" alt="Listado de grupos sobre Default Channel Group. Destacar opción Copiar para crear uno nuevo" class="post-img" loading="lazy">
+            <figcaption class="post-img-caption">Listado de grupos sobre Default Channel Group. Destacar opción "Copiar para crear uno nuevo".</figcaption>
+        </figure>
 
         <ol start="3">
             <li>Busca el canal por defecto y haz clic en <strong>Copiar para crear uno nuevo</strong>.</li>
@@ -134,10 +136,10 @@
             <li>Pega la expresión regular con las fuentes de IA (Gemini, Copilot, Perplexity o ChatGPT), aplica, guarda el canal y la agrupación de canales.</li>
         </ol>
 
-        <div class="post-placeholder-img">
-            <span style="font-weight:700;">[Captura Crítica 3]</span>
-            <span style="opacity:0.75; font-size:12px;">Formulario del canal "Ai". Destacar: Selector "Fuente", "partial matches regular expression" y la Regex pegada.</span>
-        </div>
+        <figure>
+            <img src="images/ga4-regex-canal-ia.jpg" alt="Formulario del canal Ai. Destacar: Selector Fuente, partial matches regular expression y la Regex pegada" class="post-img" loading="lazy">
+            <figcaption class="post-img-caption">Formulario del canal "Ai". Destacar: Selector "Fuente", "partial matches regular expression" y la Regex pegada.</figcaption>
+        </figure>
 
         <h3>Paso 3: Crear una Exploración avanzada (Recomendado)</h3>
         <p>Para hacer un análisis más en profundidad de este tráfico, es más práctico usar <strong>técnicas de exploración</strong>.</p>
@@ -148,10 +150,10 @@
             <li>Al aplicar, verás automáticamente cuántos usuarios (ej. 62 usuarios) y eventos (ej. 372 eventos) cumplen con la condición.</li>
         </ol>
 
-        <div class="post-placeholder-img">
-            <span style="font-weight:700;">[Captura Crítica 4]</span>
-            <span style="opacity:0.75; font-size:12px;">Panel de configuración del Segmento. Destacar: Dimensión "Pace referer", condición "matches reg" y sumario de usuarios.</span>
-        </div>
+        <figure>
+            <img src="images/ga4-segmento-page-referrer.jpg" alt="Panel de configuración del Segmento. Destacar: Dimensión Pace referer, condición matches reg y sumario de usuarios" class="post-img" loading="lazy">
+            <figcaption class="post-img-caption">Panel de configuración del Segmento. Destacar: Dimensión "Pace referer", condición "matches reg" y sumario de usuarios.</figcaption>
+        </figure>
 
         <h3>Paso 4: Analizar los datos de la IA</h3>
         <p>Cruza el segmento creado con diferentes dimensiones métricas para generar informes avanzados:</p>
@@ -160,20 +162,20 @@
             <li><strong>Páginas de destino:</strong> Este informe es muy relevante porque nos permite inferir cuáles son los términos de búsqueda que utilizaron, analizando en qué contenido aterrizaron (por ejemplo, un curso de BigQuery).</li>
         </ul>
 
-        <div class="post-placeholder-img">
-            <span>[Espacio para la Captura 5]</span>
-            <span style="opacity:0.75; font-size:12px;">Tabla de páginas de destino. Destacar: URLs de cursos (ej. BigQuery) cruzadas con volumen de tráfico.</span>
-        </div>
+        <figure>
+            <img src="images/ga4-paginas-destino-ia.jpg" alt="Tabla de páginas de destino. Destacar: URLs de cursos cruzadas con volumen de tráfico" class="post-img" loading="lazy">
+            <figcaption class="post-img-caption">Tabla de páginas de destino. Destacar: URLs de cursos (ej. BigQuery) cruzadas con volumen de tráfico.</figcaption>
+        </figure>
 
         <ul>
             <li><strong>Conversiones:</strong> Revisa qué eventos se están consiguiendo, fijándote si ya hay usuarios dejándote sus datos (evento <code>generate_lead</code>).</li>
             <li><strong>Rutas de exploración:</strong> Utiliza este informe para entender cómo los usuarios navegan después de acceder, viendo qué eventos hacen, si hicieron scroll y cuántos clics necesitaron para generar un lead.</li>
         </ul>
 
-        <div class="post-placeholder-img">
-            <span>[Espacio para la Captura 6]</span>
-            <span style="opacity:0.75; font-size:12px;">Rutas de exploración (Gráfico de árbol). Destacar: Navegación post-clic, eventos, scroll y generate_lead.</span>
-        </div>
+        <figure>
+            <img src="images/ga4-rutas-exploracion-ia.jpg" alt="Rutas de exploración (Gráfico de árbol). Destacar: Navegación post-clic, eventos, scroll y generate_lead" class="post-img" loading="lazy">
+            <figcaption class="post-img-caption">Rutas de exploración (Gráfico de árbol). Destacar: Navegación post-clic, eventos, scroll y generate_lead.</figcaption>
+        </figure>
 
         <h2>Errores comunes</h2>
         <ul>
