@@ -135,9 +135,9 @@
             <li>En las condiciones, apóyate en la dimensión <strong>Fuente</strong> y elige la opción <strong>partial matches regular expression</strong>.</li>
             <li>Pega la expresión regular con las fuentes de IA (Gemini, Copilot, Perplexity o ChatGPT). Puedes usar esta expresión regular para agrupar tráfico procedente de herramientas de IA:
                 <div style="background-color: var(--surface); padding: 16px; border-radius: 8px; border: 1px solid var(--border); margin: 14px 0;">
-                    <code style="background: transparent; border: none; padding: 0; font-size: 15px; color: var(--ink); word-break: break-all;">^.*\.ai/.*|.*\.openai.*|.*copilot.*|.*chatgpt.*|.*gemini.*$</code>
+                    <code style="background: transparent; border: none; padding: 0; font-size: 15px; color: var(--ink); word-break: break-all;">.*(chatgpt\.com|openai\.com|claude\.ai|anthropic\.com|gemini\.google\.com|copilot\.microsoft\.com|microsoft365\.com|office\.com|perplexity\.ai|meta\.ai|grok\.com|x\.ai|poe\.com|you\.com|mistral\.ai).*</code>
                 </div>
-                <span style="font-size: 14px; color: var(--muted); display: block; margin-top: -4px; margin-bottom: 16px;"><em>Nota: Puedes ampliar esta regex en el futuro con la aparición de nuevas fuentes o herramientas generativas.</em></span>
+                <span style="font-size: 14px; color: var(--muted); display: block; margin-top: -4px; margin-bottom: 16px;"><em>Nota: Esta versión evita usar una coincidencia demasiado amplia como <code>.ai</code> y está pensada para capturar fuentes de tráfico de asistentes generativos y buscadores de IA más habituales. Puedes ampliar esta regex en el futuro con la aparición de nuevas fuentes.</em></span>
             </li>
             <li>Aplica, guarda el canal y la agrupación de canales.</li>
         </ol>
