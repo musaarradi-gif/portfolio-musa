@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cómo medir el tráfico de Inteligencia Artificial en GA4 — Musa Arradi</title>
+  <meta name="description" content="Aprende a medir y analizar el tráfico web procedente de herramientas de IA como ChatGPT, Gemini o Perplexity en Google Analytics 4. Tutorial paso a paso para configurar GA4." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../styles.css" />
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml" />
+  <link rel="icon" href="../favicon.png" type="image/png" />
+  <link rel="apple-touch-icon" href="../apple-touch-icon.png" />
+  <meta name="theme-color" content="#0f172a" />
+  
+  <meta property="og:title" content="Cómo medir el tráfico de Inteligencia Artificial en GA4 — Musa Arradi" />
+  <meta property="og:description" content="Aprende a medir y analizar el tráfico web procedente de herramientas de IA como ChatGPT, Gemini o Perplexity en Google Analytics 4. Tutorial paso a paso para configurar GA4." />
+  <meta property="og:type" content="article" />
+  <meta property="og:url" content="https://portfolio-musa-phi.vercel.app/blog/medir-trafico-ia-ga4.html" />
+  <meta property="og:image" content="https://portfolio-musa-phi.vercel.app/profile.webp" />
+  <meta name="twitter:card" content="summary_large_image" />
+
+  <style>
+    .article-content { padding: 64px 0 96px; }
+    .post-container { max-width: 720px; margin: 0 auto; }
+    .post-meta { display: flex; align-items: center; gap: 12px; margin-bottom: 24px; color: var(--muted); font-size: 14px; font-weight: 500; }
+    .post-cat { background: var(--accent-soft); color: var(--accent-dark); padding: 4px 10px; border-radius: 99px; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; }
+    
+    .post-body h2 { font-size: 26px; font-weight: 800; color: var(--ink); margin: 40px 0 16px; letter-spacing: -0.02em; }
+    .post-body h3 { font-size: 20px; font-weight: 700; color: var(--ink); margin: 32px 0 12px; letter-spacing: -0.01em; }
+    .post-body p { font-size: 17px; line-height: 1.75; color: var(--ink-2); margin-bottom: 24px; }
+    .post-body strong { color: var(--ink); }
+    .post-body ul, .post-body ol { margin-bottom: 24px; padding-left: 20px; }
+    .post-body li { font-size: 17px; line-height: 1.75; color: var(--ink-2); margin-bottom: 12px; position: relative; padding-left: 10px; }
+    .post-body ul li { list-style: none; padding-left: 20px; }
+    .post-body ul li::before { content: ''; position: absolute; left: 0; top: 12px; width: 6px; height: 6px; background: var(--accent); border-radius: 50%; opacity: 0.6; }
+    
+    .post-body code { background-color: var(--surface); padding: 3px 6px; border-radius: 4px; font-family: monospace; font-size: 0.9em; border: 1px solid var(--border-soft); }
+    .post-body table { width: 100%; border-collapse: collapse; margin-top: 24px; margin-bottom: 32px; font-size: 15px; }
+    .post-body th, .post-body td { border: 1px solid var(--border); padding: 12px 16px; text-align: left; }
+    .post-body th { background-color: var(--surface); font-weight: 700; color: var(--ink); }
+    .post-body .highlight { background-color: rgba(234, 179, 8, 0.1); border-left: 4px solid #eab308; padding: 16px 20px; margin: 24px 0; border-radius: 0 8px 8px 0; }
+    .post-body .highlight p { margin-bottom: 0; font-size: 16px; }
+    
+    .post-placeholder-img { width: 100%; height: auto; aspect-ratio: 16/9; background: var(--surface); border: 1px dashed var(--border); border-radius: 8px; display: flex; align-items: center; justify-content: center; color: var(--muted); margin: 24px 0; font-size: 14px; text-align: center; padding: 20px; flex-direction: column; gap: 8px; }
+    
+    .post-footer { margin-top: 64px; padding-top: 48px; border-top: 1px solid var(--border-soft); text-align: center; }
+  </style>
+</head>
+<body>
+
+  <!-- Navigation -->
+  <nav class="nav" id="navbar">
+    <div class="nav-inner">
+      <a href="../index.html" class="nav-logo">Musa Arradi <span>SEO & AI Search</span></a>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="../index.html#experience">Experiencia</a></li>
+        <li><a href="../projects.html">Proyectos</a></li>
+        <li><a href="../blog.html" class="active">Blog</a></li>
+        <li class="nav-cta"><a href="../index.html#contact">Contacto</a></li>
+      </ul>
+      <button class="hamburger" id="hamburger" aria-label="Abrir menú">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Page Header -->
+  <div class="page-header">
+    <div class="container">
+      <div class="post-container">
+        <div class="post-meta">
+          <span class="post-cat">Analítica & Reporting</span>
+          <span>&middot;</span>
+          <span>13 de Abril, 2026</span>
+          <span>&middot;</span>
+          <span>8 min lectura</span>
+        </div>
+        <h1 style="font-size: clamp(32px, 6vw, 48px); line-height: 1.15;">Cómo medir el tráfico de Inteligencia Artificial en GA4: Tutorial Definitivo</h1>
+        <p style="font-size: 19px; margin-top: 20px; max-width: 100%;">Aprende a medir y analizar el tráfico web procedente de herramientas de IA como ChatGPT, Gemini o Perplexity en Google Analytics 4.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- MAIN CONTENT -->
+  <article class="article-content">
+    <div class="container">
+      <div class="post-container post-body">
+        
+        <h2>Introducción</h2>
+        <p>Actualmente, muchos usuarios acceden a páginas web a través de herramientas de Inteligencia artificial generativa como <strong>Gemini o ChatGPT</strong>, las cuales se han convertido en verdaderos motores de búsqueda que traen tráfico cualificado. Sin embargo, Google Analytics 4 (GA4) no es capaz de identificar este tráfico por defecto, <strong>incluyéndolo en el canal "Unassigned"</strong>.</p>
+        <p>Este tutorial te enseñará cómo configurar la herramienta para sacar esas visitas del cajón de sastre y generar diferentes informes para medir la calidad del tráfico, su propensión de compra e intentar identificar los términos de búsqueda.</p>
+        
+        <h2>Requisitos previos</h2>
+        <ul>
+            <li>Acceso con permisos para crear nuevas agrupaciones de canales y exploraciones en GA4.</li>
+            <li>Una <strong>expresión regular (Regex)</strong> que identifique a las herramientas de IA más habituales, la cual el autor proporciona en la descripción de su vídeo.</li>
+        </ul>
+
+        <h2>Paso a paso</h2>
+
+        <h3>Paso 1: Comprobar el tráfico de IA actual</h3>
+        <p>Antes de configurar nada, vamos a comprobar si ya estás recibiendo este tráfico oculto.</p>
+        <ol>
+            <li>Ve a la sección de Informes en GA4 y abre el informe de <strong>Adquisición de tráfico</strong>.</li>
+            <li>Cambia la dimensión principal a <strong>Fuente de la sesión (session source)</strong>.</li>
+            <li>En el buscador de la tabla, <strong>escribe términos como "Ai" o "gpt"</strong>.</li>
+            <li>Si ves fuentes como <code>perplexity</code> o <code>chatgpt</code>, significa que la herramienta no está preparada y tienes visitas perdiéndose en el canal <em>Unassigned</em>.</li>
+        </ol>
+
+        <div class="post-placeholder-img">
+            <span>[Espacio para la Captura 1]</span>
+            <span style="opacity:0.75; font-size:12px;">Tabla con dimensión "session source" y búsqueda "Ai". Fuentes como perplexity o chatgpt etiquetadas como Unassigned.</span>
+        </div>
+
+        <h3>Paso 2: Crear una agrupación de canales personalizada</h3>
+        <p>Para que GA4 clasifique este tráfico automáticamente, debemos crear una nueva agrupación.</p>
+        <ol>
+            <li>Ve a la sección de <strong>Administración</strong>.</li>
+            <li>Entra en <strong>visualización de datos (Data display)</strong> y luego a la sección de <strong>Channel groups</strong>.</li>
+        </ol>
+
+        <div class="post-placeholder-img">
+            <span>[Espacio para la Captura 2]</span>
+            <span style="opacity:0.75; font-size:12px;">Listado de grupos sobre Default Channel Group. Destacar opción "Copiar para crear uno nuevo".</span>
+        </div>
+
+        <ol start="3">
+            <li>Busca el canal por defecto y haz clic en <strong>Copiar para crear uno nuevo</strong>.</li>
+            <li>Nombra el nuevo grupo (por ejemplo: <code>default Channel grou including Ai Traffic</code>).</li>
+            <li>Haz clic para crear un nuevo canal y <strong>llámalo <code>Ai</code></strong>.</li>
+            <li>En las condiciones, apóyate en la dimensión <strong>Fuente</strong> y elige la opción <strong>partial matches regular expression</strong>.</li>
+            <li>Pega la expresión regular con las fuentes de IA (Gemini, Copilot, Perplexity o ChatGPT), aplica, guarda el canal y la agrupación de canales.</li>
+        </ol>
+
+        <div class="post-placeholder-img">
+            <span style="font-weight:700;">[Captura Crítica 3]</span>
+            <span style="opacity:0.75; font-size:12px;">Formulario del canal "Ai". Destacar: Selector "Fuente", "partial matches regular expression" y la Regex pegada.</span>
+        </div>
+
+        <h3>Paso 3: Crear una Exploración avanzada (Recomendado)</h3>
+        <p>Para hacer un análisis más en profundidad de este tráfico, es más práctico usar <strong>técnicas de exploración</strong>.</p>
+        <ol>
+            <li>Crea una exploración y añade un <strong>Segmento de tráfico de Inteligencia artificial</strong>.</li>
+            <li>Utiliza la dimensión de referencia de la página (indicada como <em>Pace referer</em> en el vídeo).</li>
+            <li>Selecciona la condición <strong>matches reg</strong> e incluye la expresión regular.</li>
+            <li>Al aplicar, verás automáticamente cuántos usuarios (ej. 62 usuarios) y eventos (ej. 372 eventos) cumplen con la condición.</li>
+        </ol>
+
+        <div class="post-placeholder-img">
+            <span style="font-weight:700;">[Captura Crítica 4]</span>
+            <span style="opacity:0.75; font-size:12px;">Panel de configuración del Segmento. Destacar: Dimensión "Pace referer", condición "matches reg" y sumario de usuarios.</span>
+        </div>
+
+        <h3>Paso 4: Analizar los datos de la IA</h3>
+        <p>Cruza el segmento creado con diferentes dimensiones métricas para generar informes avanzados:</p>
+        <ul>
+            <li><strong>Adquisición general:</strong> Añade métricas de volumen como usuarios, sesiones, <em>engagement rate</em> e interacciones de conversión.</li>
+            <li><strong>Páginas de destino:</strong> Este informe es muy relevante porque nos permite inferir cuáles son los términos de búsqueda que utilizaron, analizando en qué contenido aterrizaron (por ejemplo, un curso de BigQuery).</li>
+        </ul>
+
+        <div class="post-placeholder-img">
+            <span>[Espacio para la Captura 5]</span>
+            <span style="opacity:0.75; font-size:12px;">Tabla de páginas de destino. Destacar: URLs de cursos (ej. BigQuery) cruzadas con volumen de tráfico.</span>
+        </div>
+
+        <ul>
+            <li><strong>Conversiones:</strong> Revisa qué eventos se están consiguiendo, fijándote si ya hay usuarios dejándote sus datos (evento <code>generate_lead</code>).</li>
+            <li><strong>Rutas de exploración:</strong> Utiliza este informe para entender cómo los usuarios navegan después de acceder, viendo qué eventos hacen, si hicieron scroll y cuántos clics necesitaron para generar un lead.</li>
+        </ul>
+
+        <div class="post-placeholder-img">
+            <span>[Espacio para la Captura 6]</span>
+            <span style="opacity:0.75; font-size:12px;">Rutas de exploración (Gráfico de árbol). Destacar: Navegación post-clic, eventos, scroll y generate_lead.</span>
+        </div>
+
+        <h2>Errores comunes</h2>
+        <ul>
+            <li><strong>No crear una copia del Channel Group:</strong> Es importante dar a "Copiar para crear uno nuevo" para partir del canal por defecto.</li>
+            <li><strong>Asumir que GA4 lo mide solo:</strong> GA4 no es capaz de identificarlo por defecto y mete estas visitas en el cajón de sastre del <em>not provided</em> o <em>Unassigned</em> si no actualizas la configuración.</li>
+        </ul>
+
+        <hr>
+
+        <h2>Conclusión</h2>
+        <p>El tráfico procedente de Inteligencia Artificial va a seguir aumentando en el tiempo hasta convertirse en <strong>verdaderas alternativas a motores de búsqueda consolidados</strong> como Google o Bing. Configurar GA4 hoy para identificar este tráfico te permitirá enriquecer tus contenidos para una experiencia óptima dentro de estas nuevas herramientas.</p>
+
+        <div class="highlight">
+            <p><strong>⚠️ Nota de privacidad:</strong> Asegúrate siempre de cumplir con el GDPR/RGPD a la hora de procesar o guardar parámetros de tráfico de los usuarios.</p>
+        </div>
+
+        <h2>FAQ</h2>
+        <p><strong>¿Se pueden ver las palabras clave exactas que el usuario buscó en la IA?</strong><br>
+        La herramienta enmascara las búsquedas en el <em>not provided</em>, pero el informe de páginas de destino nos permite inferir los términos de búsqueda basándonos en el contenido donde aterriza el usuario.</p>
+
+        <div class="post-footer">
+          <p>¿Necesitas ayuda configurando la analítica de tu proyecto para entornos IA?</p>
+          <div style="margin-top: 24px;">
+            <a href="../index.html#contact" class="btn btn-primary">Contactar asesoría &rarr;</a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </article>
+
+  <footer class="site-footer">
+    <p>&copy; 2026 Musa Arradi &middot; <a href="../index.html">Home</a> &middot; <a href="../projects.html">Proyectos</a> &middot; <a href="../blog.html">Blog</a> &middot; Barcelona</p>
+  </footer>
+
+  <script>
+    const nav = document.getElementById('navbar');
+    window.addEventListener('scroll', () => nav.classList.toggle('scrolled', window.scrollY > 10), { passive: true });
+
+    const ham = document.getElementById('hamburger');
+    const links = document.getElementById('navLinks');
+    ham.addEventListener('click', () => links.classList.toggle('open'));
+  </script>
+</body>
+</html>
