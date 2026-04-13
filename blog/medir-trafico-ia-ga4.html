@@ -133,7 +133,13 @@
             <li>Nombra el nuevo grupo (por ejemplo: <code>default Channel grou including Ai Traffic</code>).</li>
             <li>Haz clic para crear un nuevo canal y <strong>llámalo <code>Ai</code></strong>.</li>
             <li>En las condiciones, apóyate en la dimensión <strong>Fuente</strong> y elige la opción <strong>partial matches regular expression</strong>.</li>
-            <li>Pega la expresión regular con las fuentes de IA (Gemini, Copilot, Perplexity o ChatGPT), aplica, guarda el canal y la agrupación de canales.</li>
+            <li>Pega la expresión regular con las fuentes de IA (Gemini, Copilot, Perplexity o ChatGPT). Puedes usar esta expresión regular para agrupar tráfico procedente de herramientas de IA:
+                <div style="background-color: var(--surface); padding: 16px; border-radius: 8px; border: 1px solid var(--border); margin: 14px 0;">
+                    <code style="background: transparent; border: none; padding: 0; font-size: 15px; color: var(--ink); word-break: break-all;">^.*\.ai/.*|.*\.openai.*|.*copilot.*|.*chatgpt.*|.*gemini.*$</code>
+                </div>
+                <span style="font-size: 14px; color: var(--muted); display: block; margin-top: -4px; margin-bottom: 16px;"><em>Nota: Puedes ampliar esta regex en el futuro con la aparición de nuevas fuentes o herramientas generativas.</em></span>
+            </li>
+            <li>Aplica, guarda el canal y la agrupación de canales.</li>
         </ol>
 
         <figure>
